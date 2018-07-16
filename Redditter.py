@@ -1,4 +1,4 @@
-#!bin/bash/python3
+#!/usr/bin/python3
 import argparse
 
 def table(text, align="left"):
