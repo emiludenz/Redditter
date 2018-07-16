@@ -44,7 +44,10 @@ def hover_text(args):
     print("[{0}]({1} \"{2}\")".format(text,link,link_text))
 
 def spoiler_text(args):
-    print("[{}](#s \"{}\")".format(args[0],args[1]))
+    if len(args) < 2:
+        print(">!{}!<".format(args[0]))
+    else:
+        print("[{}](#s \"{}\")".format(args[0],args[1]))
 
 def header_text(args):
     if int(args[1]) > 6:
@@ -60,8 +63,8 @@ def main():
     parser = argparse.ArgumentParser()
 
     #Setting up parser arguments
-    parser.add_argument("-s","--spoiler", nargs=2,type=str,
-            help="Prints out formatted spoiler text, with the second argument as the shown text")
+    parser.add_argument("-s","--spoiler", nargs="*",type=str,
+            help="Prints out formatted spoiler text, if provided with a second argument it will be the shown text")
     parser.add_argument("-H","--header", nargs=2,
             help="Prints out header text, header as first argument and size as second argument")
     parser.add_argument("-t","--table",
